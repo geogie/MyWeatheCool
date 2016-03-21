@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import app.coolweather.com.myweathecool.R;
+import app.coolweather.com.myweathecool.service.AutoUpdateService;
 import app.coolweather.com.myweathecool.util.HttpCallbackListener;
 import app.coolweather.com.myweathecool.util.HttpUtil;
 import app.coolweather.com.myweathecool.util.Utility;
@@ -175,5 +176,7 @@ public class WeatherActivity extends Activity implements View.OnClickListener {
         currentDateText.setText(prefs.getString("current_date", ""));
         weatherInfoLayout.setVisibility(View.VISIBLE);
         cityNameText.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 }
